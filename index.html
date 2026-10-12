@@ -1,124 +1,1138 @@
-<!DOCTYPE html>
-<html lang="fr"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Portfolio BTS SIO SISR – Durai AMRI</title>
+<!doctype html>
+<html lang="fr">
+  <!--
+    PORTFOLIO BTS SIO SISR : Durai AMRI
+      1. style     : le design (thèmes, fenêtres, menu, mise en page)
+      2. body      : barre du haut, colonne profil, contenu, pied de page
+      3. script    : contenu (réalisations, veille, pages), navigation, thèmes, couleurs
+  
+    Pour modifier : cherche [[ pour les textes à compléter, const PAL pour les couleurs.
+  -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Portfolio BTS SIO SISR – Durai AMRI</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-<script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||'dark'}catch(e){document.documentElement.dataset.theme='dark'}</script>
-<style>
-:root{--bg1:#030305;--bg2:#0d0a16;--glass:rgba(14,12,22,.68);--tx:#ece8f7;--mu:#a59fbd;--a1:#c4a7ff;--a2:#ff7ab8;--a3:#7cf0ff;--ln:rgba(255,255,255,.1);--dim:rgba(0,0,0,.45);--on:#14061f;--sh:rgba(0,0,0,.55);--r:14px;--g:12px;--bl:16px;--ease:cubic-bezier(.05,.9,.1,1.05);--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-:root[data-theme="light"]{--bg1:#fdfdff;--bg2:#e9efff;--glass:rgba(255,255,255,.62);--tx:#272a4d;--mu:#667094;--a1:#5b7bf5;--a2:#b657d6;--a3:#f2b84b;--ln:rgba(91,123,245,.2);--dim:rgba(255,255,255,.35);--on:#fff;--sh:rgba(110,120,190,.22)}
-@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
-@keyframes spin{to{--ang:360deg}}
-@keyframes pop{from{opacity:0;transform:scale(.93) translateY(10px)}to{opacity:1;transform:none}}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box;scrollbar-width:thin;scrollbar-color:var(--a1) transparent}
-::selection{background:var(--a1);color:var(--on)}
-body{margin:0;min-height:100vh;color:var(--tx);font:14px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg1);background:radial-gradient(900px 520px at 10% -5%,color-mix(in srgb,var(--a3) 32%,transparent),transparent 60%),radial-gradient(800px 520px at 100% 8%,color-mix(in srgb,var(--a1) 26%,transparent),transparent 60%),linear-gradient(160deg,var(--bg1),var(--bg2)) fixed}
-body.fond{background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}
-body.fond::before{content:"";position:fixed;inset:0;background:var(--dim);z-index:-1}
-a{color:var(--a1)}h1,h2,h3,h4{font-family:var(--mono);margin:0 0 .5rem;line-height:1.25}
-#top,.sb,.card,.hero,.note{position:relative;border-radius:var(--r);background:var(--glass);-webkit-backdrop-filter:blur(var(--bl)) saturate(150%);backdrop-filter:blur(var(--bl)) saturate(150%);box-shadow:0 10px 30px var(--sh);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
-#top::before,.sb::before,.card::before,.hero::before,.note::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:2px;background:conic-gradient(from var(--ang),var(--a1),var(--a2),var(--a3),var(--a1));opacity:.4;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 9s linear infinite;pointer-events:none;transition:opacity .45s var(--ease)}
-#top:hover::before,.sb:hover::before,.card:hover::before,.hero:hover::before,.note:hover::before,.card:focus-within::before{opacity:1;animation-duration:3.5s}
-.sb:hover,.card:hover,.hero:hover{transform:translateY(-3px);box-shadow:0 0 26px color-mix(in srgb,var(--a1) 30%,transparent),0 14px 34px var(--sh)}
-#top{display:flex;align-items:center;gap:.7rem;width:calc(100% - 24px);max-width:1280px;margin:8px auto 0;padding:.4rem .6rem;position:sticky;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:10;border-radius:999px}
-nav{display:flex;gap:.2rem;overflow-x:auto;scrollbar-width:none;counter-reset:ws;min-width:0;flex:0 1 auto}
-nav a{counter-increment:ws;font:600 .78rem var(--mono);color:var(--mu);text-decoration:none;padding:.35rem .65rem;border-radius:999px;white-space:nowrap;flex:none;transition:all .35s var(--ease)}
-nav a::before{content:counter(ws);opacity:.55;margin-right:.4rem}nav a:hover{color:var(--tx);background:var(--ln)}
-nav a.on{color:var(--on);background:linear-gradient(135deg,var(--a1),var(--a2));box-shadow:0 0 16px color-mix(in srgb,var(--a1) 55%,transparent)}
-#ban{margin-left:auto;font:700 .85rem var(--mono);white-space:nowrap;flex:none}#ban small{display:none}
-#clk{font:.78rem var(--mono);color:var(--a2);padding:0 .6rem;white-space:nowrap}
-#wrap{display:grid;grid-template-columns:260px minmax(0,1fr);gap:var(--g);max-width:1280px;margin:var(--g) auto;padding:0 12px;align-items:start}
-aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px)}main{min-width:0}
-section.on{display:flex;flex-direction:column;gap:var(--g)}section.on>*{margin:0;animation:pop .55s var(--ease) backwards}
-section.on>:nth-child(2){animation-delay:.05s}section.on>:nth-child(3){animation-delay:.1s}section.on>:nth-child(4){animation-delay:.15s}section.on>:nth-child(5){animation-delay:.2s}section.on>:nth-child(n+6){animation-delay:.25s}
-@media(max-width:1180px){#clk{display:none}}@media(max-width:980px){#ban{display:none}#thm{margin-left:auto}}@media(max-width:600px){#thm span{display:none}}
-@media(max-width:860px){#wrap{grid-template-columns:1fr}aside{position:static}}
-.sb{margin-bottom:var(--g);font-size:.85rem}.sb h4{color:var(--a1);font-size:.8rem;padding:.7rem .9rem .1rem;margin:0;text-transform:uppercase;letter-spacing:.08em}
-.sb div{padding:.5rem .9rem .8rem}.sb p{margin:.25rem 0}
-.ph{width:160px;max-width:100%;aspect-ratio:3/4;margin:0 auto .6rem;border:1px dashed var(--ln);border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--mu)}
-.ph.has{border:0}.ph img{width:100%;height:100%;object-fit:cover;display:block}
-h2{display:flex;align-items:center;gap:.6rem;font-size:1.3rem;color:var(--a1);text-shadow:0 0 18px color-mix(in srgb,var(--a1) 50%,transparent)}
-h2::before{content:"❯";color:var(--a2)}h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--a1),transparent)}
-h3{font-size:.9rem;color:var(--a2);margin-top:.4rem}.card h3{margin-top:0}
-.card,.hero,.note{padding:1rem 1.15rem}.note{color:var(--mu)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--g);grid-auto-flow:dense}.grid .card{margin:0}
-.hero h1{font-size:clamp(1.8rem,5vw,2.8rem);background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--mu)}
-.ports{display:flex;gap:.4rem;flex-wrap:wrap;margin:.9rem 0}.ports span{font:700 .78rem var(--mono);border:1px solid var(--ln);border-radius:8px;padding:.2rem .55rem;display:flex;align-items:center;gap:.4rem}
-.ports span:before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--a2);box-shadow:0 0 8px var(--a2)}
-.btn{display:inline-block;font:600 .8rem var(--mono);color:var(--a1);text-decoration:none;padding:.45rem 1rem;margin:.2rem .35rem .2rem 0;border:1px solid color-mix(in srgb,var(--a1) 55%,transparent);border-radius:999px;transition:all .4s var(--ease)}
-.btn:hover{background:linear-gradient(135deg,var(--a1),var(--a2));color:var(--on);transform:translateY(-2px);box-shadow:0 0 18px color-mix(in srgb,var(--a1) 50%,transparent)}
-table{border-collapse:separate;border-spacing:0;width:100%;font-size:.85rem}th,td{border-bottom:1px solid var(--ln);padding:.45rem .6rem;text-align:left;vertical-align:top}th{font-family:var(--mono);color:var(--a1)}tr:last-child td{border-bottom:0}tr:hover td{background:color-mix(in srgb,var(--a1) 8%,transparent)}
-.sc{overflow-x:auto;padding:.4rem .6rem}.sc::before{display:none}.sc{border:1px solid var(--ln)}.ok{color:var(--a2);font-weight:700;text-align:center;text-shadow:0 0 8px var(--a2)}
-details.card summary{cursor:pointer;font:700 .9rem var(--mono);list-style:none;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}details.card summary::-webkit-details-marker{display:none}
-details.card summary::before{content:"▸";color:var(--a2);transition:transform .4s var(--ease)}details[open] summary::before{transform:rotate(90deg)}
-i.t{font:700 .68rem var(--mono);font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));color:var(--on);border-radius:999px;padding:.05rem .5rem}
-dl{margin:.7rem 0 0}dt{font:700 .78rem var(--mono);color:var(--a1);margin-top:.6rem}dd{margin:.1rem 0 0 .2rem;border-left:2px solid var(--ln);padding-left:.7rem}
-.per{color:var(--mu);margin:.2rem 0 0;font-size:.8rem}ul{padding-left:1.2rem;margin:.3rem 0}
-#thm{font:700 .78rem var(--mono);color:var(--tx);background:none;border:1px solid var(--ln);border-radius:999px;padding:.32rem .75rem;cursor:pointer;white-space:nowrap;flex:none;transition:all .4s var(--ease)}
-#thm:hover{background:linear-gradient(135deg,var(--a1),var(--a2));color:var(--on);box-shadow:0 0 16px color-mix(in srgb,var(--a1) 50%,transparent)}
-:root[data-theme="light"] body{background:radial-gradient(700px 420px at 12% 0%,rgba(255,206,232,.85),transparent 60%),radial-gradient(800px 500px at 92% 4%,rgba(184,214,255,.85),transparent 60%),radial-gradient(900px 600px at 50% 105%,rgba(255,238,190,.8),transparent 60%),linear-gradient(160deg,#fdfdff,#e9efff) fixed}
-:root[data-theme="light"] .hero h1{background-image:linear-gradient(90deg,var(--a1),var(--a2))}
-:root[data-theme="light"] h2{text-shadow:none}
-mark{background:none;color:inherit;padding:0}
-footer{max-width:1280px;margin:0 auto;padding:.8rem 1rem 1.2rem;text-align:center;color:var(--mu);font:.72rem/1.6 var(--mono)}
-@media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}}
-</style></head><body>
-<header id="top"><nav id="nav"></nav><div id="ban">Durai AMRI<small>Portfolio professionnel · BTS SIO option SISR · </small></div><div id="clk"></div><button id="thm" type="button" title="Changer de thème" aria-label="Changer de thème"></button></header>
-<div id="wrap"><aside id="side"></aside><main id="m"></main></div>
-<footer>Portfolio E5 – Support et mise à disposition de services informatiques · Lycée Marie Curie · Session 2027<br>Dernière mise à jour : <mark>02/09/2026</mark></footer>
-<script>
-const h=s=>s.replace(/\[\[(.+?)\]\]/g,'<mark>$1</mark>');
-const L=['Contexte','Besoin / objectif','Environnement technique','Travail personnel','Difficulté & diagnostic','Solution mise en œuvre','Tests & résultats','Documentation / preuves','Bilan'];
-const R=[
-['Mise en place de GLPI : inventaire et gestion des tickets','Nov. 2025 – [[durée]]','1,2,5',['Parc fictif d\'une PME de [[30]] postes (TP encadré, lycée Marie Curie).','Recenser le matériel et suivre les incidents de façon traçable.','VM Debian [[12]], Apache, MariaDB, GLPI [[10.x]], agent GLPI Inventory.','Installation, entités et profils, import des utilisateurs, déploiement de l\'agent, catégories de tickets.','Postes absents de l\'inventaire : lecture des logs de l\'agent puis vérification de l\'URL du serveur et du pare-feu.','URL de l\'agent corrigée, règle de pare-feu ajoutée, inventaire relancé.','[[5]] postes remontés ; ticket ouvert, attribué, résolu et clôturé de bout en bout.','Procédure d\'installation, guide « ouvrir un ticket », captures d\'écran.','J\'ai appris à structurer un parc ; je prévoirais la sauvegarde de la base dès le départ.']],
-['Déploiement AD DS, DHCP, DNS et GPO sous Windows Server','Déc. 2025 – [[durée]]','1,5',['Maquette virtualisée d\'une petite entreprise [[20]] utilisateurs.','Centraliser comptes, adressage IP et paramètres des postes.','Windows Server [[2022]], client Windows 11, Oracle VirtualBox.','Promotion du contrôleur de domaine, étendue DHCP, zones DNS, unités d\'organisation, GPO (mappage lecteur, fond d\'écran, mots de passe).','Un client ne recevait aucune adresse : service DHCP, autorisation dans l\'AD et étendue contrôlés.','Étendue activée et serveur DHCP autorisé dans l\'annuaire.','ipconfig /all, gpupdate /force, gpresult : adresses et GPO appliquées. Capture Wireshark des échanges DHCP (Discover, Offer, Request, Ack).','Schéma réseau, captures de configuration, procédure pas à pas.','Mieux nommer mes OU dès le début ; documenter chaque GPO.']],
-['Supervision d\'un parc avec Zabbix','Janv. 2026 – [[durée]]','2,5,6',['Besoin de détecter une panne avant l\'appel de l\'utilisateur.','Surveiller serveurs et équipements, alerter par e-mail.','Zabbix [[7.0]], agents Linux/Windows, SNMP, serveur SMTP de test.','Installation du serveur, ajout des hôtes, modèles, déclencheurs et alertes.','Alertes non reçues : test SMTP puis correction du média d\'envoi et du déclencheur.','Média e-mail reconfiguré, seuils CPU/disque ajustés.','Arrêt volontaire d\'un service : alerte reçue en [[1]] min.','Procédure d\'ajout d\'un hôte, tableau de bord en capture.','Veille sur l\'outil à l\'origine du choix ; j\'ajouterais des seuils par criticité.']],
-['Site de l\'association [[nom]] : WordPress sécurisé','Févr. 2026 – [[durée]]','3,5',['Association sans présence en ligne.','Publier un site vitrine fiable, mis à jour et sécurisé.','Debian, Apache, PHP, MariaDB, WordPress, Let\'s Encrypt, Fail2ban.','Installation, thème, pages et actualités, HTTPS, référencement de base (titres, sitemap), sauvegardes automatiques.','Redirection HTTP→HTTPS en boucle : analyse de la configuration du vhost.','Vhost corrigé, certificat renouvelé automatiquement.','Test SSL, scan des failles, restauration d\'une sauvegarde.','Guide d\'administration pour les bénévoles, procédure de mise à jour.','Prévoir un environnement de test avant chaque mise à jour.']],
-[
-'Maquette multi-VLAN avec Cisco Packet Tracer (projet de groupe)','Mars – Mai 2026','4,5',['Projet à [[4]] élèves, entreprise fictive de 3 services.','Segmenter le réseau et filtrer les flux entre services.','Cisco Packet Tracer, switch et routeur Cisco, VLAN 10/20/30, routage statique, routage inter-VLAN, DHCP par VLAN, Trello, GitHub.','Cahier des charges, répartition des tâches (Trello, méthode agile), configuration des VLAN, du routage et des ACL, dossier final. Mon rôle : [[à préciser]].','Flux inter-VLAN bloqués : revue des ACL dans leur ordre d\'évaluation.','ACL réordonnées, exceptions documentées.','Ping et accès inter-services autorisés ou refusés comme prévu.','Cahier des charges, planning, comptes rendus, fichier .pkt, dépôt Git.','Réunions plus courtes et mieux préparées.']],
-['Technicien de maintenance informatique : magasin Mobi First','Mai 2024 – Sept. 2025','1,2,5,6',['Magasin de réparation et de vente à Marseille, clientèle de particuliers ([[type de contrat]]).','Remettre en état les appareils rapidement et conseiller la solution adaptée.','Ordinateurs, consoles, smartphones ; Windows ; [[outils de diagnostic utilisés]].','Diagnostic et réparation matérielle (écrans, batteries, composants) et logicielle ; conseil client ; gestion du flux de dépannage.','[[Un dépannage précis : symptôme, tests effectués, cause trouvée]].','[[Réparation ou remplacement appliqué]].','Contrôle de fonctionnement avec le client avant restitution.','Certificat de travail, [[fiches d\'intervention anonymisées]].','J\'ai appris à prioriser les demandes et à expliquer un problème technique simplement.']],
-['Administration d\'une base MariaDB : droits et sauvegardes','[[Mois 2026]] – [[durée]]','1,5,6',['Base d\'une application interne fictive ([[gestion de stock]]) hébergée sur une VM.','Mettre à disposition une base accessible à l\'application, avec des droits limités et des sauvegardes testées.','VM Debian [[12]] sous Oracle VirtualBox, MariaDB [[10.11]], SQL, mysqldump, cron.','Installation et sécurisation, création de la base et des tables [[à préciser]], utilisateur limité à sa base, script de sauvegarde planifié, test de restauration.','Connexion refusée depuis la VM cliente : contrôle du service, de l\'adresse d\'écoute (bind-address), des droits utilisateur@hôte et du pare-feu.','Adresse d\'écoute modifiée, utilisateur recréé pour l\'hôte du client, port 3306 ouvert uniquement vers l\'application.','Connexion depuis la VM cliente ; accès refusé hors de sa base ; restauration complète du dump sur une seconde VM.','Procédure d\'installation, script de sauvegarde commenté, captures d\'écran.','Une sauvegarde ne vaut que si la restauration est testée. La prochaine fois : chiffrer les sauvegardes et les copier hors de la VM. Lien avec ma veille (fiches 1 à 3).']],
-['Serveur NAS OpenMediaVault et accès SSH sécurisé','[[Mois 2026]] – [[durée]]','1,5,6',['Projet personnel de homelab : stocker et partager des fichiers ([[préciser]]).','Disposer d\'un stockage réseau centralisé, accessible et administrable à distance en sécurité.','OpenMediaVault [[7]] sur [[VM ou mini-PC]], disques [[à préciser]], OpenSSH, clients Windows et Linux.','Installation d\'OpenMediaVault, volumes et dossiers partagés (SMB), utilisateurs et droits, accès SSH par clé, connexion root par mot de passe désactivée.','[[Un problème rencontré : partage inaccessible, droits, connexion SSH refusée…]]','[[Correction appliquée]].','Accès au partage depuis Windows et Linux ; connexion SSH par clé réussie, par mot de passe refusée ; scan Nmap pour vérifier les ports ouverts.','Procédure d\'installation, schéma, captures d\'écran, [[configuration sshd commentée]].','Un stockage doit être sauvegardé et protégé : la prochaine fois, j\'ajoute une sauvegarde externe et une supervision.']]];
-const C=['Gérer le patrimoine informatique','Répondre aux incidents et aux demandes d\'assistance','Développer la présence en ligne','Travailler en mode projet','Mettre à disposition un service informatique','Organiser son développement professionnel'];
-const V=[
-['PostgreSQL : cycle de versions et mises à jour','postgresql.org, politique de versions [[date de consultation]]','PostgreSQL publie une version majeure par an, chacune soutenue pendant cinq ans. Au-delà, plus de correctifs de sécurité. [[Ajouter les nouveautés de la dernière version après lecture des notes de version.]]','Planifier la montée de version avant la fin du support, tester sur une copie, prévoir un retour arrière.','Restaurer une sauvegarde sur une VM et tester la mise à jour.','1,5,6'],
-['Injection SQL et droits minimaux','OWASP (owasp.org), Top 10 catégorie « Injection » [[année, date]]','Une injection SQL permet de lire ou modifier une base via un champ mal contrôlé. Les requêtes préparées et un compte applicatif aux droits limités réduisent le risque.','Fuite de données clients, obligations RGPD (CNIL), arrêt de service.','En TP sécurisé : créer un utilisateur MariaDB limité à une base, puis tester une injection sur une application volontairement vulnérable.','2,5,6'],
-['Sauvegarde et réplication des bases','Documentation officielle MariaDB [[page, date]]','Règle 3-2-1 : trois copies, deux supports, une copie hors site. Une sauvegarde n\'est fiable que si la restauration a été testée. La réplication maître/esclave limite l\'arrêt de service.','Une base perdue peut arrêter l\'entreprise ; le coût d\'une sauvegarde est faible face à une panne.','Automatiser un dump (cron) et restaurer sur une seconde VM ; monter une réplication simple (voir R7).','1,2,6']];
-const T={
-accueil:()=>`<div class=hero><h1>Durai AMRI</h1><p>Étudiant en BTS SIO option SISR, 2<sup>e</sup> année, au lycée Marie Curie. Je prépare l'épreuve E5 et je construis des services réseau et systèmes fiables, documentés et supervisés.</p><div class=ports>${[1,2,3,4,5,6].map(i=>`<span>C${i}</span>`).join('')}</div><a class=btn href="#realisations">Voir mes réalisations</a><a class="btn o" href="cv_amri.pdf" target="_blank">Télécharger mon CV</a><a class="btn o" href="https://github.com/versidx" target="_blank" rel="noopener">GitHub</a><a class="btn o" href="https://www.linkedin.com/in/durai-a-563205384/" target="_blank" rel="noopener">LinkedIn</a></div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Thème appliqué tout de suite pour éviter un flash -->
+    <script>
+      try {
+        document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+      } catch (e) {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
+    <style>
+      /* ===== THÈMES : variables de couleurs (sombre par défaut, clair plus bas) ===== */
+      :root {
+        --bg1: #050505;
+        --bg2: #141414;
+        --glass: rgba(16, 16, 16, 0.68);
+        --tx: #ececec;
+        --mu: #9b9b9b;
+        --a1: #f5f5f5;
+        --a2: #b8b8b8;
+        --a3: #7a7a7a;
+        --ln: rgba(255, 255, 255, 0.12);
+        --dim: rgba(0, 0, 0, 0.45);
+        --on: #0a0a0a;
+        --sh: rgba(0, 0, 0, 0.55);
+        --r: 14px;
+        --g: 12px;
+        --bl: 16px;
+        --ease: cubic-bezier(0.05, 0.9, 0.1, 1.05);
+        --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      :root[data-theme="light"] {
+        --bg1: #ffffff;
+        --bg2: #ebebeb;
+        --glass: rgba(255, 255, 255, 0.7);
+        --tx: #1c1c1c;
+        --mu: #6b6b6b;
+        --a1: #2e2e2e;
+        --a2: #737373;
+        --a3: #bdbdbd;
+        --ln: rgba(0, 0, 0, 0.15);
+        --dim: rgba(255, 255, 255, 0.35);
+        --on: #fff;
+        --sh: rgba(0, 0, 0, 0.16);
+      }
+      /* ===== ANIMATIONS ===== */
+      @property --ang {
+        syntax: "<angle>";
+        inherits: false;
+        initial-value: 0deg;
+      }
+      @keyframes spin {
+        to {
+          --ang: 360deg;
+        }
+      }
+      @keyframes pop {
+        from {
+          opacity: 0;
+          transform: scale(0.93) translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      /* ===== BASE ===== */
+      html {
+        scroll-padding-top: env(safe-area-inset-top, 0px);
+      }
+      * {
+        box-sizing: border-box;
+        scrollbar-width: thin;
+        scrollbar-color: var(--a1) transparent;
+      }
+      ::selection {
+        background: var(--a1);
+        color: var(--on);
+      }
+      /* ===== FOND DE PAGE (fond.jpg est ajouté par le script) ===== */
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--tx);
+        font:
+          14px/1.6 system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        background: var(--bg1);
+        background:
+          radial-gradient(
+            900px 520px at 10% -5%,
+            color-mix(in srgb, var(--a3) 32%, transparent),
+            transparent 60%
+          ),
+          radial-gradient(
+            800px 520px at 100% 8%,
+            color-mix(in srgb, var(--a1) 26%, transparent),
+            transparent 60%
+          ),
+          linear-gradient(160deg, var(--bg1), var(--bg2)) fixed;
+      }
+      body.fond {
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+      }
+      body.fond::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: var(--dim);
+        z-index: -1;
+      }
+      a {
+        color: var(--a1);
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--mono);
+        margin: 0 0 0.5rem;
+        line-height: 1.25;
+      }
+      /* ===== FENÊTRES : verre flou et bordure lumineuse animée ===== */
+      #top,
+      .sb,
+      .card,
+      .hero,
+      .note {
+        position: relative;
+        border-radius: var(--r);
+        background: var(--glass);
+        -webkit-backdrop-filter: blur(var(--bl)) saturate(150%);
+        backdrop-filter: blur(var(--bl)) saturate(150%);
+        box-shadow: 0 10px 30px var(--sh);
+        transition:
+          transform 0.45s var(--ease),
+          box-shadow 0.45s var(--ease);
+      }
+      #top::before,
+      .sb::before,
+      .card::before,
+      .hero::before,
+      .note::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 2px;
+        background: conic-gradient(from var(--ang), var(--a1), var(--a2), var(--a3), var(--a1));
+        opacity: 0.4;
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: spin 9s linear infinite;
+        pointer-events: none;
+        transition: opacity 0.45s var(--ease);
+      }
+      #top:hover::before,
+      .sb:hover::before,
+      .card:hover::before,
+      .hero:hover::before,
+      .note:hover::before,
+      .card:focus-within::before {
+        opacity: 1;
+        animation-duration: 3.5s;
+      }
+      .sb:hover,
+      .card:hover,
+      .hero:hover {
+        transform: translateY(-3px);
+        box-shadow:
+          0 0 26px color-mix(in srgb, var(--a1) 30%, transparent),
+          0 14px 34px var(--sh);
+      }
+      /* ===== BARRE DU HAUT ===== */
+      #top {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        width: calc(100% - 24px);
+        max-width: 1280px;
+        margin: 8px auto 0;
+        padding: 0.4rem 0.6rem;
+        position: sticky;
+        top: calc(env(safe-area-inset-top, 0px) + 8px);
+        z-index: 10;
+        border-radius: 999px;
+      }
+      /* ===== MENU (espaces de travail) ===== */
+      nav {
+        display: flex;
+        gap: 0.2rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+        counter-reset: ws;
+        min-width: 0;
+        flex: 0 1 auto;
+      }
+      nav a {
+        counter-increment: ws;
+        font: 600 0.78rem var(--mono);
+        color: var(--mu);
+        text-decoration: none;
+        padding: 0.35rem 0.65rem;
+        border-radius: 999px;
+        white-space: nowrap;
+        flex: none;
+        transition: all 0.35s var(--ease);
+      }
+      nav a::before {
+        content: counter(ws);
+        opacity: 0.55;
+        margin-right: 0.4rem;
+      }
+      nav a:hover {
+        color: var(--tx);
+        background: var(--ln);
+      }
+      nav a.on {
+        color: var(--on);
+        background: linear-gradient(135deg, var(--a1), var(--a2));
+        box-shadow: 0 0 16px color-mix(in srgb, var(--a1) 55%, transparent);
+      }
+      #ban {
+        margin-left: auto;
+        font: 700 0.85rem var(--mono);
+        white-space: nowrap;
+        flex: none;
+      }
+      #ban small {
+        display: none;
+      }
+      #clk {
+        font: 0.78rem var(--mono);
+        color: var(--a2);
+        padding: 0 0.6rem;
+        white-space: nowrap;
+      }
+      /* ===== MISE EN PAGE : grille en mosaïque ===== */
+      #wrap {
+        display: grid;
+        grid-template-columns: 260px minmax(0, 1fr);
+        gap: var(--g);
+        max-width: 1280px;
+        margin: var(--g) auto;
+        padding: 0 12px;
+        align-items: start;
+      }
+      aside {
+        position: sticky;
+        top: calc(env(safe-area-inset-top, 0px) + 70px);
+      }
+      main {
+        min-width: 0;
+      }
+      section.on {
+        display: flex;
+        flex-direction: column;
+        gap: var(--g);
+      }
+      section.on > * {
+        margin: 0;
+        animation: pop 0.55s var(--ease) backwards;
+      }
+      section.on > :nth-child(2) {
+        animation-delay: 0.05s;
+      }
+      section.on > :nth-child(3) {
+        animation-delay: 0.1s;
+      }
+      section.on > :nth-child(4) {
+        animation-delay: 0.15s;
+      }
+      section.on > :nth-child(5) {
+        animation-delay: 0.2s;
+      }
+      section.on > :nth-child(n + 6) {
+        animation-delay: 0.25s;
+      }
+      @media (max-width: 1180px) {
+        #clk {
+          display: none;
+        }
+      }
+      @media (max-width: 980px) {
+        #ban {
+          display: none;
+        }
+        #thm {
+          margin-left: auto;
+        }
+      }
+      @media (max-width: 600px) {
+        #thm span {
+          display: none;
+        }
+      }
+      @media (max-width: 860px) {
+        #wrap {
+          grid-template-columns: 1fr;
+        }
+        aside {
+          position: static;
+        }
+      }
+      /* ===== COLONNE PROFIL ===== */
+      .sb {
+        margin-bottom: var(--g);
+        font-size: 0.85rem;
+      }
+      .sb h4 {
+        color: var(--a1);
+        font-size: 0.8rem;
+        padding: 0.7rem 0.9rem 0.1rem;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .sb div {
+        padding: 0.5rem 0.9rem 0.8rem;
+      }
+      .sb p {
+        margin: 0.25rem 0;
+      }
+      .ph {
+        width: 160px;
+        max-width: 100%;
+        aspect-ratio: 3/4;
+        margin: 0 auto 0.6rem;
+        border: 1px dashed var(--ln);
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--mu);
+      }
+      .ph.has {
+        border: 0;
+      }
+      .ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      /* ===== TITRES ET CARTES ===== */
+      h2 {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 1.3rem;
+        color: var(--a1);
+        text-shadow: 0 0 18px color-mix(in srgb, var(--a1) 50%, transparent);
+      }
+      h2::before {
+        content: "❯";
+        color: var(--a2);
+      }
+      h2::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, var(--a1), transparent);
+      }
+      h3 {
+        font-size: 0.9rem;
+        color: var(--a2);
+        margin-top: 0.4rem;
+      }
+      .card h3 {
+        margin-top: 0;
+      }
+      .card,
+      .hero,
+      .note {
+        padding: 1rem 1.15rem;
+      }
+      .note {
+        color: var(--mu);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: var(--g);
+        grid-auto-flow: dense;
+      }
+      .grid .card {
+        margin: 0;
+      }
+      /* ===== ACCUEIL ===== */
+      .hero h1 {
+        font-size: clamp(1.8rem, 5vw, 2.8rem);
+        background: linear-gradient(90deg, var(--a1), var(--a2), var(--a3));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .hero p {
+        color: var(--mu);
+      }
+      .ports {
+        display: flex;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        margin: 0.9rem 0;
+      }
+      .ports span {
+        font: 700 0.78rem var(--mono);
+        border: 1px solid var(--ln);
+        border-radius: 8px;
+        padding: 0.2rem 0.55rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .ports span:before {
+        content: "";
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: var(--a2);
+        box-shadow: 0 0 8px var(--a2);
+      }
+      /* ===== BOUTONS ===== */
+      .btn {
+        display: inline-block;
+        font: 600 0.8rem var(--mono);
+        color: var(--a1);
+        text-decoration: none;
+        padding: 0.45rem 1rem;
+        margin: 0.2rem 0.35rem 0.2rem 0;
+        border: 1px solid color-mix(in srgb, var(--a1) 55%, transparent);
+        border-radius: 999px;
+        transition: all 0.4s var(--ease);
+      }
+      .btn:hover {
+        background: linear-gradient(135deg, var(--a1), var(--a2));
+        color: var(--on);
+        transform: translateY(-2px);
+        box-shadow: 0 0 18px color-mix(in srgb, var(--a1) 50%, transparent);
+      }
+      /* ===== TABLEAUX ===== */
+      table {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+        font-size: 0.85rem;
+      }
+      th,
+      td {
+        border-bottom: 1px solid var(--ln);
+        padding: 0.45rem 0.6rem;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        font-family: var(--mono);
+        color: var(--a1);
+      }
+      tr:last-child td {
+        border-bottom: 0;
+      }
+      tr:hover td {
+        background: color-mix(in srgb, var(--a1) 8%, transparent);
+      }
+      .sc {
+        overflow-x: auto;
+        padding: 0.4rem 0.6rem;
+      }
+      .sc::before {
+        display: none;
+      }
+      .sc {
+        border: 1px solid var(--ln);
+      }
+      .ok {
+        color: var(--a2);
+        font-weight: 700;
+        text-align: center;
+        text-shadow: 0 0 8px var(--a2);
+      }
+      /* ===== FICHES DÉPLIABLES (réalisations, veille, stage) ===== */
+      details.card summary {
+        cursor: pointer;
+        font: 700 0.9rem var(--mono);
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+      }
+      details.card summary::-webkit-details-marker {
+        display: none;
+      }
+      details.card summary::before {
+        content: "▸";
+        color: var(--a2);
+        transition: transform 0.4s var(--ease);
+      }
+      details[open] summary::before {
+        transform: rotate(90deg);
+      }
+      i.t {
+        font: 700 0.68rem var(--mono);
+        font-style: normal;
+        background: linear-gradient(135deg, var(--a1), var(--a2));
+        color: var(--on);
+        border-radius: 999px;
+        padding: 0.05rem 0.5rem;
+      }
+      dl {
+        margin: 0.7rem 0 0;
+      }
+      dt {
+        font: 700 0.78rem var(--mono);
+        color: var(--a1);
+        margin-top: 0.6rem;
+      }
+      dd {
+        margin: 0.1rem 0 0 0.2rem;
+        border-left: 2px solid var(--ln);
+        padding-left: 0.7rem;
+      }
+      .per {
+        color: var(--mu);
+        margin: 0.2rem 0 0;
+        font-size: 0.8rem;
+      }
+      ul {
+        padding-left: 1.2rem;
+        margin: 0.3rem 0;
+      }
+      /* ===== BOUTONS THÈME ET COULEURS ===== */
+      #thm,
+      #pal {
+        font: 700 0.78rem var(--mono);
+        color: var(--tx);
+        background: none;
+        border: 1px solid var(--ln);
+        border-radius: 999px;
+        padding: 0.32rem 0.75rem;
+        cursor: pointer;
+        white-space: nowrap;
+        flex: none;
+        transition: all 0.4s var(--ease);
+      }
+      #thm:hover,
+      #pal:hover {
+        background: linear-gradient(135deg, var(--a1), var(--a2));
+        color: var(--on);
+        box-shadow: 0 0 16px color-mix(in srgb, var(--a1) 50%, transparent);
+      }
+      /* ===== THÈME CLAIR : réglages spécifiques ===== */
+      :root[data-theme="light"] body {
+        background:
+          radial-gradient(700px 420px at 12% 0%, rgba(255, 255, 255, 0.95), transparent 60%),
+          radial-gradient(800px 500px at 92% 4%, rgba(222, 222, 222, 0.85), transparent 60%),
+          radial-gradient(900px 600px at 50% 105%, rgba(235, 235, 235, 0.9), transparent 60%),
+          linear-gradient(160deg, #fff, #e8e8e8) fixed;
+      }
+      :root[data-theme="light"] .hero h1 {
+        background-image: linear-gradient(90deg, var(--a1), var(--a2));
+      }
+      :root[data-theme="light"] h2 {
+        text-shadow: none;
+      }
+      /* ===== SÉLECTEUR DE COULEURS ===== */
+      #palp {
+        position: absolute;
+        right: 0;
+        top: calc(100% + 10px);
+        width: 250px;
+        padding: 0.9rem;
+        border-radius: var(--r);
+        background: var(--bg2);
+        border: 1px solid var(--ln);
+        box-shadow: 0 14px 34px var(--sh);
+        display: grid;
+        gap: 0.7rem;
+        animation: pop 0.35s var(--ease);
+      }
+      #palp[hidden] {
+        display: none;
+      }
+      #palp .sw {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      #palp button.s {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        border: 2px solid var(--ln);
+        cursor: pointer;
+        transition: transform 0.35s var(--ease);
+      }
+      #palp button.s:hover {
+        transform: scale(1.15);
+      }
+      #palp button.s.on {
+        border-color: var(--tx);
+        box-shadow: 0 0 10px var(--a1);
+      }
+      #palp label {
+        font: 0.72rem var(--mono);
+        color: var(--mu);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      #palp input {
+        width: 2rem;
+        height: 1.6rem;
+        border: 0;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+      }
+      /* ===== DIVERS : surlignage désactivé, pied de page ===== */
+      mark {
+        background: none;
+        color: inherit;
+        padding: 0;
+      }
+      footer {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0.8rem 1rem 1.2rem;
+        text-align: center;
+        color: var(--mu);
+        font: 0.72rem/1.6 var(--mono);
+      }
+      /* ===== ACCESSIBILITÉ : animations coupées si demandé ===== */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Barre du haut -->
+    <header id="top">
+      <nav id="nav"></nav>
+      <div id="ban">Durai AMRI<small>Portfolio professionnel · BTS SIO option SISR · </small></div>
+      <div id="clk"></div>
+      <button id="thm" type="button" title="Changer de thème" aria-label="Changer de thème"></button>
+      <button id="pal" type="button" title="Couleurs" aria-label="Changer les couleurs">◐</button>
+      <div id="palp" hidden></div>
+    </header>
+    <!-- Colonne profil + contenu (remplis par le script) -->
+    <div id="wrap">
+      <aside id="side"></aside>
+      <main id="m"></main>
+    </div>
+    <!-- Pied de page -->
+    <footer>
+      Portfolio E5 – Support et mise à disposition de services informatiques · Lycée Marie Curie · Session
+      2027<br />Dernière mise à jour : <mark>02/09/2026</mark>
+    </footer>
+    <script>
+      // ===== 1. OUTIL =====
+      // h() : le texte entre [[ ]] est un texte à compléter (affiché normalement)
+      const h = (s) => s.replace(/\[\[(.+?)\]\]/g, "<mark>$1</mark>");
+      // ===== 2. CONTENU : tes textes =====
+      // L : intitulés des champs d'une fiche de réalisation
+      const L = [
+        "Contexte",
+        "Besoin / objectif",
+        "Environnement technique",
+        "Travail personnel",
+        "Difficulté & diagnostic",
+        "Solution mise en œuvre",
+        "Tests & résultats",
+        "Documentation / preuves",
+        "Bilan",
+      ];
+      // R : réalisations. Chaque entrée = [titre, période, compétences, [9 champs]]
+      const R = [
+        [
+          "Mise en place de GLPI : inventaire et gestion des tickets",
+          "Nov. 2025 – [[durée]]",
+          "1,2,5",
+          [
+            "Parc fictif d'une PME de [[30]] postes (TP encadré, lycée Marie Curie).",
+            "Recenser le matériel et suivre les incidents de façon traçable.",
+            "VM Debian [[12]], Apache, MariaDB, GLPI [[10.x]], agent GLPI Inventory.",
+            "Installation, entités et profils, import des utilisateurs, déploiement de l'agent, catégories de tickets.",
+            "Postes absents de l'inventaire : lecture des logs de l'agent puis vérification de l'URL du serveur et du pare-feu.",
+            "URL de l'agent corrigée, règle de pare-feu ajoutée, inventaire relancé.",
+            "[[5]] postes remontés ; ticket ouvert, attribué, résolu et clôturé de bout en bout.",
+            "Procédure d'installation, guide « ouvrir un ticket », captures d'écran.",
+            "J'ai appris à structurer un parc ; je prévoirais la sauvegarde de la base dès le départ.",
+          ],
+        ],
+        [
+          "Déploiement AD DS, DHCP, DNS et GPO sous Windows Server",
+          "Déc. 2025 – [[durée]]",
+          "1,5",
+          [
+            "Maquette virtualisée d'une petite entreprise [[20]] utilisateurs.",
+            "Centraliser comptes, adressage IP et paramètres des postes.",
+            "Windows Server [[2022]], client Windows 11, Oracle VirtualBox.",
+            "Promotion du contrôleur de domaine, étendue DHCP, zones DNS, unités d'organisation, GPO (mappage lecteur, fond d'écran, mots de passe).",
+            "Un client ne recevait aucune adresse : service DHCP, autorisation dans l'AD et étendue contrôlés.",
+            "Étendue activée et serveur DHCP autorisé dans l'annuaire.",
+            "ipconfig /all, gpupdate /force, gpresult : adresses et GPO appliquées. Capture Wireshark des échanges DHCP (Discover, Offer, Request, Ack).",
+            "Schéma réseau, captures de configuration, procédure pas à pas.",
+            "Mieux nommer mes OU dès le début ; documenter chaque GPO.",
+          ],
+        ],
+        [
+          "Supervision d'un parc avec Zabbix",
+          "Janv. 2026 – [[durée]]",
+          "2,5,6",
+          [
+            "Besoin de détecter une panne avant l'appel de l'utilisateur.",
+            "Surveiller serveurs et équipements, alerter par e-mail.",
+            "Zabbix [[7.0]], agents Linux/Windows, SNMP, serveur SMTP de test.",
+            "Installation du serveur, ajout des hôtes, modèles, déclencheurs et alertes.",
+            "Alertes non reçues : test SMTP puis correction du média d'envoi et du déclencheur.",
+            "Média e-mail reconfiguré, seuils CPU/disque ajustés.",
+            "Arrêt volontaire d'un service : alerte reçue en [[1]] min.",
+            "Procédure d'ajout d'un hôte, tableau de bord en capture.",
+            "Veille sur l'outil à l'origine du choix ; j'ajouterais des seuils par criticité.",
+          ],
+        ],
+        [
+          "Site de l'association [[nom]] : WordPress sécurisé",
+          "Févr. 2026 – [[durée]]",
+          "3,5",
+          [
+            "Association sans présence en ligne.",
+            "Publier un site vitrine fiable, mis à jour et sécurisé.",
+            "Debian, Apache, PHP, MariaDB, WordPress, Let's Encrypt, Fail2ban.",
+            "Installation, thème, pages et actualités, HTTPS, référencement de base (titres, sitemap), sauvegardes automatiques.",
+            "Redirection HTTP→HTTPS en boucle : analyse de la configuration du vhost.",
+            "Vhost corrigé, certificat renouvelé automatiquement.",
+            "Test SSL, scan des failles, restauration d'une sauvegarde.",
+            "Guide d'administration pour les bénévoles, procédure de mise à jour.",
+            "Prévoir un environnement de test avant chaque mise à jour.",
+          ],
+        ],
+        [
+          "Maquette multi-VLAN avec Cisco Packet Tracer (projet de groupe)",
+          "Mars – Mai 2026",
+          "4,5",
+          [
+            "Projet à [[4]] élèves, entreprise fictive de 3 services.",
+            "Segmenter le réseau et filtrer les flux entre services.",
+            "Cisco Packet Tracer, switch et routeur Cisco, VLAN 10/20/30, routage statique, routage inter-VLAN, DHCP par VLAN, Trello, GitHub.",
+            "Cahier des charges, répartition des tâches (Trello, méthode agile), configuration des VLAN, du routage et des ACL, dossier final. Mon rôle : [[à préciser]].",
+            "Flux inter-VLAN bloqués : revue des ACL dans leur ordre d'évaluation.",
+            "ACL réordonnées, exceptions documentées.",
+            "Ping et accès inter-services autorisés ou refusés comme prévu.",
+            "Cahier des charges, planning, comptes rendus, fichier .pkt, dépôt Git.",
+            "Réunions plus courtes et mieux préparées.",
+          ],
+        ],
+        [
+          "Technicien de maintenance informatique : magasin Mobi First",
+          "Mai 2024 – Sept. 2025",
+          "1,2,5,6",
+          [
+            "Magasin de réparation et de vente à Marseille, clientèle de particuliers ([[type de contrat]]).",
+            "Remettre en état les appareils rapidement et conseiller la solution adaptée.",
+            "Ordinateurs, consoles, smartphones ; Windows ; [[outils de diagnostic utilisés]].",
+            "Diagnostic et réparation matérielle (écrans, batteries, composants) et logicielle ; conseil client ; gestion du flux de dépannage.",
+            "[[Un dépannage précis : symptôme, tests effectués, cause trouvée]].",
+            "[[Réparation ou remplacement appliqué]].",
+            "Contrôle de fonctionnement avec le client avant restitution.",
+            "Certificat de travail, [[fiches d'intervention anonymisées]].",
+            "J'ai appris à prioriser les demandes et à expliquer un problème technique simplement.",
+          ],
+        ],
+        [
+          "Administration d'une base MariaDB : droits et sauvegardes",
+          "[[Mois 2026]] – [[durée]]",
+          "1,5,6",
+          [
+            "Base d'une application interne fictive ([[gestion de stock]]) hébergée sur une VM.",
+            "Mettre à disposition une base accessible à l'application, avec des droits limités et des sauvegardes testées.",
+            "VM Debian [[12]] sous Oracle VirtualBox, MariaDB [[10.11]], SQL, mysqldump, cron.",
+            "Installation et sécurisation, création de la base et des tables [[à préciser]], utilisateur limité à sa base, script de sauvegarde planifié, test de restauration.",
+            "Connexion refusée depuis la VM cliente : contrôle du service, de l'adresse d'écoute (bind-address), des droits utilisateur@hôte et du pare-feu.",
+            "Adresse d'écoute modifiée, utilisateur recréé pour l'hôte du client, port 3306 ouvert uniquement vers l'application.",
+            "Connexion depuis la VM cliente ; accès refusé hors de sa base ; restauration complète du dump sur une seconde VM.",
+            "Procédure d'installation, script de sauvegarde commenté, captures d'écran.",
+            "Une sauvegarde ne vaut que si la restauration est testée. La prochaine fois : chiffrer les sauvegardes et les copier hors de la VM. Lien avec ma veille (fiches 1 à 3).",
+          ],
+        ],
+        [
+          "Serveur NAS OpenMediaVault et accès SSH sécurisé",
+          "[[Mois 2026]] – [[durée]]",
+          "1,5,6",
+          [
+            "Projet personnel de homelab : stocker et partager des fichiers ([[préciser]]).",
+            "Disposer d'un stockage réseau centralisé, accessible et administrable à distance en sécurité.",
+            "OpenMediaVault [[7]] sur [[VM ou mini-PC]], disques [[à préciser]], OpenSSH, clients Windows et Linux.",
+            "Installation d'OpenMediaVault, volumes et dossiers partagés (SMB), utilisateurs et droits, accès SSH par clé, connexion root par mot de passe désactivée.",
+            "[[Un problème rencontré : partage inaccessible, droits, connexion SSH refusée…]]",
+            "[[Correction appliquée]].",
+            "Accès au partage depuis Windows et Linux ; connexion SSH par clé réussie, par mot de passe refusée ; scan Nmap pour vérifier les ports ouverts.",
+            "Procédure d'installation, schéma, captures d'écran, [[configuration sshd commentée]].",
+            "Un stockage doit être sauvegardé et protégé : la prochaine fois, j'ajoute une sauvegarde externe et une supervision.",
+          ],
+        ],
+      ];
+      // C : les 6 compétences du Bloc 1
+      const C = [
+        "Gérer le patrimoine informatique",
+        "Répondre aux incidents et aux demandes d'assistance",
+        "Développer la présence en ligne",
+        "Travailler en mode projet",
+        "Mettre à disposition un service informatique",
+        "Organiser son développement professionnel",
+      ];
+      // V : fiches de veille. [titre, source, résumé, impact entreprise, expérimentation, compétences]
+      const V = [
+        [
+          "PostgreSQL : cycle de versions et mises à jour",
+          "postgresql.org, politique de versions [[date de consultation]]",
+          "PostgreSQL publie une version majeure par an, chacune soutenue pendant cinq ans. Au-delà, plus de correctifs de sécurité. [[Ajouter les nouveautés de la dernière version après lecture des notes de version.]]",
+          "Planifier la montée de version avant la fin du support, tester sur une copie, prévoir un retour arrière.",
+          "Restaurer une sauvegarde sur une VM et tester la mise à jour.",
+          "1,5,6",
+        ],
+        [
+          "Injection SQL et droits minimaux",
+          "OWASP (owasp.org), Top 10 catégorie « Injection » [[année, date]]",
+          "Une injection SQL permet de lire ou modifier une base via un champ mal contrôlé. Les requêtes préparées et un compte applicatif aux droits limités réduisent le risque.",
+          "Fuite de données clients, obligations RGPD (CNIL), arrêt de service.",
+          "En TP sécurisé : créer un utilisateur MariaDB limité à une base, puis tester une injection sur une application volontairement vulnérable.",
+          "2,5,6",
+        ],
+        [
+          "Sauvegarde et réplication des bases",
+          "Documentation officielle MariaDB [[page, date]]",
+          "Règle 3-2-1 : trois copies, deux supports, une copie hors site. Une sauvegarde n'est fiable que si la restauration a été testée. La réplication maître/esclave limite l'arrêt de service.",
+          "Une base perdue peut arrêter l'entreprise ; le coût d'une sauvegarde est faible face à une panne.",
+          "Automatiser un dump (cron) et restaurer sur une seconde VM ; monter une réplication simple (voir R7).",
+          "1,2,6",
+        ],
+      ];
+      // ===== 3. PAGES =====
+      // T : une fonction par page. Texte, e-mail et liens sont à modifier ici
+      const T = {
+        accueil:
+          () => `<div class=hero><h1>Durai AMRI</h1><p>Étudiant en BTS SIO option SISR, 2<sup>e</sup> année, au lycée Marie Curie. Je prépare l'épreuve E5 et je construis des services réseau et systèmes fiables, documentés et supervisés.</p><div class=ports>${[1, 2, 3, 4, 5, 6].map((i) => `<span>C${i}</span>`).join("")}</div><a class=btn href="#realisations">Voir mes réalisations</a><a class="btn o" href="cv_amri.pdf" target="_blank">Télécharger mon CV</a><a class="btn o" href="https://github.com/versidx" target="_blank" rel="noopener">GitHub</a><a class="btn o" href="https://www.linkedin.com/in/durai-a-563205384/" target="_blank" rel="noopener">LinkedIn</a></div>
 <div class=grid><div class=card><h3>${R.length} réalisations</h3>Chacune est documentée avec contexte, tests et preuves.</div><div class=card><h3>${V.length} fiches de veille</h3>Thème : bases de données.</div><div class=card><h3>Bloc 1 couvert</h3>Les six compétences sont démontrées dans le tableau de couverture.</div></div>
-<p class=note>${h('Objectif : devenir technicien puis administrateur systèmes et réseaux, avec une poursuite d\'études en [[Licence pro Systèmes Réseaux, Cybersécurité ou Administration]].')}</p>`,
-profil:()=>`<h2>Mon profil professionnel</h2><div class=card><p>${h("Étudiant en 2e année de BTS SIO option SISR au lycée Marie Curie (Marseille), j'ai d'abord obtenu un Bac Pro Systèmes Numériques option RISC avec la mention Bien.")}</p></div>
+<p class=note>${h("Objectif : devenir technicien puis administrateur systèmes et réseaux, avec une poursuite d'études en [[Licence pro Systèmes Réseaux, Cybersécurité ou Administration]].")}</p>`,
+        profil:
+          () => `<h2>Mon profil professionnel</h2><div class=card><p>${h("Étudiant en 2e année de BTS SIO option SISR au lycée Marie Curie (Marseille), j'ai d'abord obtenu un Bac Pro Systèmes Numériques option RISC avec la mention Bien.")}</p></div>
 <h3>Compétences techniques</h3><div class=grid><div class=card><h3>Systèmes et réseaux</h3><ul><li>Windows Server, Linux Server, serveur Apache, Oracle VirtualBox</li><li>Switch et routeur Cisco, routage statique, TCP/IP, DHCP, DNS, VPN</li><li>Analyse de trames avec Wireshark</li><li>Cisco Packet Tracer</li><li>Fibre optique : raccordement, SAV (très bonne maîtrise), test de serveurs</li><li>Rack serveur : démontage</li></ul></div><div class=card><h3>Cybersécurité et maintenance</h3><ul><li>Protection des données, métadonnées, sécurisation logicielle et matérielle</li><li>Montage de PC, diagnostic de pannes, réparation de PC et de smartphones</li><li>Caméras IP, alarmes, domotique</li></ul></div><div class=card><h3>Développement et data</h3><ul><li>Python, PowerShell, SQL, HTML/CSS</li><li>Power BI, Excel (usage courant), analyse de données</li></ul></div><div class=card><h3>Outils et création</h3><ul><li>Notion, Trello (méthodes agiles)</li><li>Photoshop et suite Adobe, montage vidéo, design graphique</li><li>Production musicale (FL Studio), installation d'équipements audio</li></ul></div></div>
 <h3>Parcours</h3><table><tr><td>2025 – 2027</td><td>BTS SIO option SISR, lycée Marie Curie, Marseille. Cours clés : administration système, réseaux Cisco, cybersécurité, gestion de patrimoine informatique, SQL et bases de données, scripting.</td></tr><tr><td>2021 – 2024</td><td>Bac Pro Systèmes Numériques option RISC, lycée Le Chatelier, Marseille. Mention Très Bien.</td></tr><tr><td>2024 – 2025</td><td>Expériences en entreprise : voir la page Stage.</td></tr></table>
 <div class=grid style="margin-top:.8rem"><div class=card><h3>Certifications</h3><p>CCNA : ${h("[[en préparation]]")}</p><p>MOOC SecNumAcadémie (ANSSI), cybersécurité. ${h("[[02/02/2026]]")}</p></div><div class=card><h3>Langues</h3><p>${h("Français, anglais, arabe littéraire [[niveaux : excellent ]]")}</p></div><div class=card><h3>Centres d'intérêt</h3><ul><li>Sports: Hiking, Karaté, Footbal</li><li>Échecs</li><li>OPSEC et sécurité réseau</li></ul></div><div class=card><h3>Atouts</h3><p>Autonome, créatif, sens de l'organisation, esprit d'équipe.</p></div><div class=card><h3>Trois technologies à maîtriser</h3><ul><li>${h("[[Proxmox]]")}</li><li>${h("[[PostgreSQL]]")}</li><li>${h("[[Ansible]]")}</li></ul></div></div>
 <h3>Contact</h3><p><a href="mailto:aamridurai@gmail.com">aamridurai@gmail.com</a> · <a href="https://www.linkedin.com/in/durai-a-563205384/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/versidx" target="_blank" rel="noopener">GitHub</a></p>`,
-competences:()=>`<h2>Tableau de couverture des compétences</h2><div class="card sc"><table><tr><th>Réalisation</th>${C.map((_,i)=>`<th>C${i+1}</th>`).join('')}</tr>${R.map((r,j)=>`<tr><td>R${j+1} – ${h(r[0])}</td>${C.map((_,i)=>`<td class=ok>${r[2].split(',').includes(''+(i+1))?'✔':''}</td>`).join('')}</tr>`).join('')}</table></div>
-<div class=grid>${C.map((c,i)=>`<div class=card><h3>C${i+1} – ${c}</h3><p class=per>Preuves : ${R.map((r,j)=>r[2].split(',').includes(''+(i+1))?'R'+(j+1):'').filter(Boolean).join(', ')}${i==5?' + fiches de veille, certifications':''}</p></div>`).join('')}</div><p class=note>Une case n'est cochée que si je peux expliquer ce que j'ai réellement fait.</p>`,
-realisations:()=>`<h2>Mes réalisations professionnelles</h2>`+R.map((r,i)=>`<details class=card ${i?'':'open'}><summary>R${i+1} – ${h(r[0])}${r[2].split(',').map(x=>`<i class=t>C${x}</i>`).join('')}</summary><p class=per>${h(r[1])}</p><dl>${L.map((l,k)=>`<dt>${l}</dt><dd>${h(r[3][k])}</dd>`).join('')}</dl></details>`).join(''),
-veille:()=>`<h2>Veille technologique</h2><div class=card><p>${h('Thème : <b>les bases de données</b> (administration, sécurité, sauvegarde). Rythme : [[30 min chaque vendredi]]. Outils : [[Feedly / flux RSS, Notion]].')}</p><p>Sources : documentation officielle (PostgreSQL, MariaDB, MySQL), OWASP, CNIL, CERT-FR, ${h('[[presse spécialisée]]')}. Je vérifie la date, je compare deux sources et je résume avec mes mots.</p></div>`+V.map((v,i)=>`<details class=card ${i?'':'open'}><summary>Fiche ${i+1} – ${v[0]}${v[5].split(',').map(x=>`<i class=t>C${x}</i>`).join('')}</summary><dl><dt>Source principale</dt><dd>${h(v[1])}</dd><dt>Résumé</dt><dd>${h(v[2])}</dd><dt>Impact pour une entreprise</dt><dd>${h(v[3])}</dd><dt>Expérimentation</dt><dd>${h(v[4])}</dd><dt>Mon analyse personnelle</dt><dd>${h('[[2 ou 3 phrases : ce que cela change pour mon métier]]')}</dd></dl></details>`).join(''),
-stage:()=>`<h2>Stages et expériences professionnelles</h2><p class=per>${h("Pour l'E5, joindre une attestation de stage ou un certificat de travail pour chaque expérience. [[Préciser lesquelles relèvent du BTS]]")}</p>${[
-['Technicien fibre optique (stage)','Free, Marseille','Mars 2025','2,5',["Interventions chez des clients professionnels et particuliers : installation et mise en service de la fibre.","Maintenance corrective (SAV) et tests de continuité du signal sur serveurs.","[[Autre tâche réalisée]]"],"[[Nom du tuteur]]","[[Ce que j'ai appris, difficultés rencontrées]]"],
-['Technicien de maintenance informatique','Magasin Mobi First, Marseille','Mai 2024 – Sept. 2025','1,2,5',["Réparation matérielle et logicielle sur ordinateurs, consoles et smartphones.","Conseil client et gestion du flux de dépannage.","[[Autre tâche réalisée]]"],"[[Nom du responsable]]","[[Ce que j'ai appris, difficultés rencontrées]] (voir R6)"],
-['Technicien systèmes d\'alarme et vidéosurveillance (stage)','Oritec, Aubagne','Janvier 2024','5',["Installation de dispositifs de sécurité.","Configuration réseau des caméras IP.","[[Autre tâche réalisée]]"],"[[Nom du tuteur]]","[[Ce que j'ai appris, difficultés rencontrées]]"]
-].map((e,i)=>`<details class=card ${i?'':'open'}><summary>${e[0]}${e[3].split(',').map(x=>`<i class=t>C${x}</i>`).join('')}</summary><p class=per>${e[1]} · ${e[2]}</p><dl><dt>Activités</dt><dd><ul>${e[4].map(a=>`<li>${h(a)}</li>`).join('')}</ul></dd><dt>Tuteur</dt><dd>${h(e[5])}</dd><dt>Bilan</dt><dd>${h(e[6])}</dd></dl></details>`).join('')}`,
-projets:()=>`<h2>Projets</h2><div class=grid><div class=card><h3>Maquette Cisco Packet Tracer</h3><p>Projet de groupe : VLAN, routage et ACL. Voir R5.</p></div><div class=card><h3>PC, caméras IP et domotique</h3><p>${h('Montage de PC, caméras IP, alarmes, maison connectée. [[Décrire un projet personnel]]')}</p></div><div class=card><h3>Homelab personnel</h3><p>${h('Serveur NAS OpenMediaVault et accès SSH sécurisé (voir R8). [[Autres services : VM, Pi-hole, Docker…]]')}</p></div><div class=card><h3>OPSEC et scans réseau</h3><p>${h('Scans Nmap de mon propre réseau pour repérer les ports ouverts et réduire la surface d\'attaque. [[Décrire ce que tu as fait]]')}</p></div><div class=card><h3>Scripts d'administration</h3><p>${h('[[Script PowerShell de création d\'utilisateurs AD ou script Bash de sauvegarde]]')}</p></div></div>`,
-contact:()=>`<h2>Contact</h2><div class=card><dl><dt>E-mail</dt><dd><a href="mailto:aamridurai@gmail.com">aamridurai@gmail.com</a></dd><dt>Téléphone</dt><dd><a href="tel:+33773551155">07 73 55 11 55</a></dd><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/durai-a-563205384/" target="_blank" rel="noopener">linkedin.com/in/durai-a-563205384</a></dd><dt>GitHub</dt><dd><a href="https://github.com/versidx" target="_blank" rel="noopener">github.com/versidx</a></dd><dt>Localisation</dt><dd>Marseille</dd><dt>Disponibilité</dt><dd>${h("[[Recherche un stage à partir de 18 janvier 2027 jusqu'au 19 février 2027  …]]")}</dd></dl></div><a class=btn href="cv_amri.pdf" target="_blank">Télécharger mon CV</a>`
-};
-const N={accueil:'Accueil',profil:'Profil',competences:'Compétences',realisations:'Réalisations',veille:'Veille',stage:'Stage',projets:'Projets',contact:'Contact'};
-const nav=document.getElementById('nav'),m=document.getElementById('m');
-nav.innerHTML=Object.keys(N).map(k=>`<a href="#${k}" data-k="${k}">${N[k]}</a>`).join('');
-document.getElementById('side').innerHTML=`<div class=sb><h4>Profil</h4><div><div class=ph><mark>Photo ou avatar</mark></div><p><b>Option :</b> SISR</p><p><b>Niveau :</b> BTS SIO, 2<sup>e</sup> année</p><p><b>Lycée :</b> Marie Curie</p><p><b>Session :</b> 2027</p></div></div><div class=sb><h4>Statistiques</h4><div><p>Réalisations : <b>${R.length}</b></p><p>Fiches de veille : <b>${V.length}</b></p><p>Compétences : <b>6 / 6</b></p></div></div><div class=sb><h4>Liens</h4><div><p><a href="cv_amri.pdf" target="_blank">CV (PDF)</a></p><p><a href="mailto:aamridurai@gmail.com">E-mail</a></p><p><a href="https://github.com/versidx" target="_blank" rel="noopener">GitHub</a></p><p><a href="https://www.linkedin.com/in/durai-a-563205384/" target="_blank" rel="noopener">LinkedIn</a></p></div></div>`;
-function go(){const k=(location.hash||'#accueil').slice(1);const p=T[k]?k:'accueil';m.innerHTML=`<section class=on>${T[p]()}</section>`;nav.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.dataset.k==p));scrollTo(0,0)}
-addEventListener('hashchange',go);go();
-nav.addEventListener('wheel',e=>{if(e.deltaY){nav.scrollLeft+=e.deltaY;e.preventDefault()}},{passive:false});const clk=document.getElementById('clk');const tick=()=>{clk.textContent=new Date().toLocaleString('fr-FR',{weekday:'short',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})};tick();setInterval(tick,30000);
-const thm=document.getElementById('thm');
-function setTheme(t){document.documentElement.dataset.theme=t;thm.innerHTML=t=='light'?'☾':'☀';try{localStorage.setItem('theme',t)}catch(e){}}
-setTheme(document.documentElement.dataset.theme=='light'?'light':'dark');
-thm.onclick=()=>setTheme(document.documentElement.dataset.theme=='light'?'dark':'light');
-/* Fond et photo automatiques : déposer fond.jpg et photo.jpg à côté de index.html (png, webp, jpeg acceptés). Sans fichier, le site garde son apparence par défaut. */
-function find(b,ok){const x=['jpg','jpeg','png','webp'];let i=0;(function t(){if(i>=x.length)return;const im=new Image();im.onload=()=>ok(im,b+'.'+x[i]);im.onerror=()=>{i++;t()};im.src=b+'.'+x[i]})()}
-find('fond',(im,u)=>{document.body.classList.add('fond');document.body.style.backgroundImage='url('+u+')'});
-find('photo',im=>{const p=document.querySelector('.ph');if(p){p.innerHTML='';p.classList.add('has');p.appendChild(im)}});
-</script></body></html>
+        competences:
+          () => `<h2>Tableau de couverture des compétences</h2><div class="card sc"><table><tr><th>Réalisation</th>${C.map((_, i) => `<th>C${i + 1}</th>`).join("")}</tr>${R.map((r, j) => `<tr><td>R${j + 1} – ${h(r[0])}</td>${C.map((_, i) => `<td class=ok>${r[2].split(",").includes("" + (i + 1)) ? "✔" : ""}</td>`).join("")}</tr>`).join("")}</table></div>
+<div class=grid>${C.map(
+            (c, i) =>
+              `<div class=card><h3>C${i + 1} – ${c}</h3><p class=per>Preuves : ${R.map((r, j) =>
+                r[2].split(",").includes("" + (i + 1)) ? "R" + (j + 1) : "",
+              )
+                .filter(Boolean)
+                .join(", ")}${i == 5 ? " + fiches de veille, certifications" : ""}</p></div>`,
+          ).join(
+            "",
+          )}</div><p class=note>Une case n'est cochée que si je peux expliquer ce que j'ai réellement fait.</p>`,
+        realisations: () =>
+          `<h2>Mes réalisations professionnelles</h2>` +
+          R.map(
+            (r, i) =>
+              `<details class=card ${i ? "" : "open"}><summary>R${i + 1} – ${h(r[0])}${r[2]
+                .split(",")
+                .map((x) => `<i class=t>C${x}</i>`)
+                .join(
+                  "",
+                )}</summary><p class=per>${h(r[1])}</p><dl>${L.map((l, k) => `<dt>${l}</dt><dd>${h(r[3][k])}</dd>`).join("")}</dl></details>`,
+          ).join(""),
+        veille: () =>
+          `<h2>Veille technologique</h2><div class=card><p>${h("Thème : <b>les bases de données</b> (administration, sécurité, sauvegarde). Rythme : [[30 min chaque vendredi]]. Outils : [[Feedly / flux RSS, Notion]].")}</p><p>Sources : documentation officielle (PostgreSQL, MariaDB, MySQL), OWASP, CNIL, CERT-FR, ${h("[[presse spécialisée]]")}. Je vérifie la date, je compare deux sources et je résume avec mes mots.</p></div>` +
+          V.map(
+            (v, i) =>
+              `<details class=card ${i ? "" : "open"}><summary>Fiche ${i + 1} – ${v[0]}${v[5]
+                .split(",")
+                .map((x) => `<i class=t>C${x}</i>`)
+                .join(
+                  "",
+                )}</summary><dl><dt>Source principale</dt><dd>${h(v[1])}</dd><dt>Résumé</dt><dd>${h(v[2])}</dd><dt>Impact pour une entreprise</dt><dd>${h(v[3])}</dd><dt>Expérimentation</dt><dd>${h(v[4])}</dd><dt>Mon analyse personnelle</dt><dd>${h("[[2 ou 3 phrases : ce que cela change pour mon métier]]")}</dd></dl></details>`,
+          ).join(""),
+        stage: () =>
+          `<h2>Stages et expériences professionnelles</h2><p class=per>${h("Pour l'E5, joindre une attestation de stage ou un certificat de travail pour chaque expérience. [[Préciser lesquelles relèvent du BTS]]")}</p>${[
+            [
+              "Technicien fibre optique (stage)",
+              "Free, Marseille",
+              "Mars 2025",
+              "2,5",
+              [
+                "Interventions chez des clients professionnels et particuliers : installation et mise en service de la fibre.",
+                "Maintenance corrective (SAV) et tests de continuité du signal sur serveurs.",
+                "[[Autre tâche réalisée]]",
+              ],
+              "[[Nom du tuteur]]",
+              "[[Ce que j'ai appris, difficultés rencontrées]]",
+            ],
+            [
+              "Technicien de maintenance informatique",
+              "Magasin Mobi First, Marseille",
+              "Mai 2024 – Sept. 2025",
+              "1,2,5",
+              [
+                "Réparation matérielle et logicielle sur ordinateurs, consoles et smartphones.",
+                "Conseil client et gestion du flux de dépannage.",
+                "[[Autre tâche réalisée]]",
+              ],
+              "[[Nom du responsable]]",
+              "[[Ce que j'ai appris, difficultés rencontrées]] (voir R6)",
+            ],
+            [
+              "Technicien systèmes d'alarme et vidéosurveillance (stage)",
+              "Oritec, Aubagne",
+              "Janvier 2024",
+              "5",
+              [
+                "Installation de dispositifs de sécurité.",
+                "Configuration réseau des caméras IP.",
+                "[[Autre tâche réalisée]]",
+              ],
+              "[[Nom du tuteur]]",
+              "[[Ce que j'ai appris, difficultés rencontrées]]",
+            ],
+          ]
+            .map(
+              (e, i) =>
+                `<details class=card ${i ? "" : "open"}><summary>${e[0]}${e[3]
+                  .split(",")
+                  .map((x) => `<i class=t>C${x}</i>`)
+                  .join(
+                    "",
+                  )}</summary><p class=per>${e[1]} · ${e[2]}</p><dl><dt>Activités</dt><dd><ul>${e[4].map((a) => `<li>${h(a)}</li>`).join("")}</ul></dd><dt>Tuteur</dt><dd>${h(e[5])}</dd><dt>Bilan</dt><dd>${h(e[6])}</dd></dl></details>`,
+            )
+            .join("")}`,
+        projets: () =>
+          `<h2>Projets</h2><div class=grid><div class=card><h3>Maquette Cisco Packet Tracer</h3><p>Projet de groupe : VLAN, routage et ACL. Voir R5.</p></div><div class=card><h3>PC, caméras IP et domotique</h3><p>${h("Montage de PC, caméras IP, alarmes, maison connectée. [[Décrire un projet personnel]]")}</p></div><div class=card><h3>Homelab personnel</h3><p>${h("Serveur NAS OpenMediaVault et accès SSH sécurisé (voir R8). [[Autres services : VM, Pi-hole, Docker…]]")}</p></div><div class=card><h3>OPSEC et scans réseau</h3><p>${h("Scans Nmap de mon propre réseau pour repérer les ports ouverts et réduire la surface d'attaque. [[Décrire ce que tu as fait]]")}</p></div><div class=card><h3>Scripts d'administration</h3><p>${h("[[Script PowerShell de création d'utilisateurs AD ou script Bash de sauvegarde]]")}</p></div></div>`,
+        contact: () =>
+          `<h2>Contact</h2><div class=card><dl><dt>E-mail</dt><dd><a href="mailto:aamridurai@gmail.com">aamridurai@gmail.com</a></dd><dt>Téléphone</dt><dd><a href="tel:+33773551155">07 73 55 11 55</a></dd><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/durai-a-563205384/" target="_blank" rel="noopener">linkedin.com/in/durai-a-563205384</a></dd><dt>GitHub</dt><dd><a href="https://github.com/versidx" target="_blank" rel="noopener">github.com/versidx</a></dd><dt>Localisation</dt><dd>Marseille</dd><dt>Disponibilité</dt><dd>${h("[[Recherche un stage à partir de 18 janvier 2027 jusqu'au 19 février 2027  …]]")}</dd></dl></div><a class=btn href="cv_amri.pdf" target="_blank">Télécharger mon CV</a>`,
+      };
+      // N : menu (clé de la page : libellé)
+      const N = {
+        accueil: "Accueil",
+        profil: "Profil",
+        competences: "Compétences",
+        realisations: "Réalisations",
+        veille: "Veille",
+        stage: "Stage",
+        projets: "Projets",
+        contact: "Contact",
+      };
+      // ===== 4. NAVIGATION ET AFFICHAGE =====
+      // Colonne profil (gauche) et affichage de la page demandée dans l'URL (#profil, #contact...)
+      const nav = document.getElementById("nav"),
+        m = document.getElementById("m");
+      nav.innerHTML = Object.keys(N)
+        .map((k) => `<a href="#${k}" data-k="${k}">${N[k]}</a>`)
+        .join("");
+      document.getElementById("side").innerHTML =
+        `<div class=sb><h4>Profil</h4><div><div class=ph><mark>Photo ou avatar</mark></div><p><b>Option :</b> SISR</p><p><b>Niveau :</b> BTS SIO, 2<sup>e</sup> année</p><p><b>Lycée :</b> Marie Curie</p><p><b>Session :</b> 2027</p></div></div><div class=sb><h4>Statistiques</h4><div><p>Réalisations : <b>${R.length}</b></p><p>Fiches de veille : <b>${V.length}</b></p><p>Compétences : <b>6 / 6</b></p></div></div><div class=sb><h4>Liens</h4><div><p><a href="cv_amri.pdf" target="_blank">CV (PDF)</a></p><p><a href="mailto:aamridurai@gmail.com">E-mail</a></p><p><a href="https://github.com/versidx" target="_blank" rel="noopener">GitHub</a></p><p><a href="https://www.linkedin.com/in/durai-a-563205384/" target="_blank" rel="noopener">LinkedIn</a></p></div></div>`;
+      function go() {
+        const k = (location.hash || "#accueil").slice(1);
+        const p = T[k] ? k : "accueil";
+        m.innerHTML = `<section class=on>${T[p]()}</section>`;
+        nav.querySelectorAll("a").forEach((a) => a.classList.toggle("on", a.dataset.k == p));
+        scrollTo(0, 0);
+      }
+      addEventListener("hashchange", go);
+      go();
+      // ===== 5. MENU ET HORLOGE =====
+      // Molette de la souris = défilement horizontal du menu
+      nav.addEventListener(
+        "wheel",
+        (e) => {
+          if (e.deltaY) {
+            nav.scrollLeft += e.deltaY;
+            e.preventDefault();
+          }
+        },
+        { passive: false },
+      );
+      const clk = document.getElementById("clk");
+      const tick = () => {
+        clk.textContent = new Date().toLocaleString("fr-FR", {
+          weekday: "short",
+          day: "2-digit",
+          month: "short",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+      };
+      tick();
+      setInterval(tick, 30000);
+      // ===== 6. PALETTES DE COULEURS =====
+      // d = thème noir, l = thème clair. La première palette est celle par défaut
+      const PAL = [
+        { n: "Blanc et gris", d: ["#f5f5f5", "#b8b8b8", "#7a7a7a"], l: ["#2e2e2e", "#737373", "#bdbdbd"] },
+        { n: "Bleu et vert", d: ["#33ccff", "#00ff99", "#b388ff"], l: ["#0a7fb0", "#0a9a62", "#7a4fd6"] },
+        { n: "Violet et rose", d: ["#c4a7ff", "#ff7ab8", "#7cf0ff"], l: ["#7a4fd6", "#c23d85", "#0b8fcf"] },
+        { n: "Pastel", d: ["#9ec5ff", "#e0b3ff", "#ffe29a"], l: ["#5b7bf5", "#b657d6", "#f2b84b"] },
+        { n: "Rouge et orange", d: ["#ff5a5f", "#ff9a3d", "#ffd166"], l: ["#c62f3a", "#d9690f", "#a87a00"] },
+      ];
+      let pi = 0,
+        cu = null;
+      try {
+        pi = +localStorage.getItem("pal") || 0;
+        cu = JSON.parse(localStorage.getItem("cu") || "null");
+      } catch (e) {}
+      const pal = document.getElementById("pal"),
+        palp = document.getElementById("palp");
+      palp.innerHTML =
+        "<div class=sw>" +
+        PAL.map((p, i) => `<button type=button class=s data-i=${i} title="${p.n}"></button>`).join("") +
+        "</div><label>Perso <input type=color><input type=color><input type=color></label>";
+      const savePal = () => {
+        try {
+          localStorage.setItem("pal", pi);
+          if (cu) localStorage.setItem("cu", JSON.stringify(cu));
+        } catch (e) {}
+      };
+      function applyPal() {
+        const k = document.documentElement.dataset.theme == "light" ? "l" : "d",
+          c = pi < 0 && cu ? cu : PAL[Math.max(pi, 0)][k],
+          st = document.documentElement.style;
+        ["--a1", "--a2", "--a3"].forEach((v, i) => st.setProperty(v, c[i]));
+        palp.querySelectorAll(".s").forEach((b) => {
+          const q = PAL[b.dataset.i][k];
+          b.style.background = "conic-gradient(" + q.join(",") + "," + q[0] + ")";
+          b.classList.toggle("on", +b.dataset.i == pi);
+        });
+        palp.querySelectorAll("input").forEach((x, i) => (x.value = c[i]));
+      }
+      pal.onclick = () => {
+        palp.hidden = !palp.hidden;
+      };
+      palp.onclick = (e) => {
+        const b = e.target.closest && e.target.closest(".s");
+        if (b) {
+          pi = +b.dataset.i;
+          savePal();
+          applyPal();
+        }
+      };
+      palp.oninput = (e) => {
+        if (e.target.type == "color") {
+          cu = [...palp.querySelectorAll("input")].map((x) => x.value);
+          pi = -1;
+          savePal();
+          applyPal();
+        }
+      };
+      document.addEventListener("click", (e) => {
+        if (!palp.hidden && !e.target.closest("#palp,#pal")) palp.hidden = true;
+      });
+      // ===== 7. THÈME NOIR / CLAIR =====
+      const thm = document.getElementById("thm");
+      function setTheme(t) {
+        document.documentElement.dataset.theme = t;
+        thm.innerHTML = t == "light" ? "☾" : "☀";
+        try {
+          localStorage.setItem("theme", t);
+        } catch (e) {}
+        applyPal();
+      }
+      setTheme(document.documentElement.dataset.theme == "light" ? "light" : "dark");
+      thm.onclick = () => setTheme(document.documentElement.dataset.theme == "light" ? "dark" : "light");
+      // ===== 8. FOND ET PHOTO AUTOMATIQUES =====
+      // Dépose fond.jpg et photo.jpg à côté de index.html : ils s'affichent tout seuls
+      function find(b, ok) {
+        const x = ["jpg", "jpeg", "png", "webp"];
+        let i = 0;
+        (function t() {
+          if (i >= x.length) return;
+          const im = new Image();
+          im.onload = () => ok(im, b + "." + x[i]);
+          im.onerror = () => {
+            i++;
+            t();
+          };
+          im.src = b + "." + x[i];
+        })();
+      }
+      find("fond", (im, u) => {
+        document.body.classList.add("fond");
+        document.body.style.backgroundImage = "url(" + u + ")";
+      });
+      find("photo", (im) => {
+        const p = document.querySelector(".ph");
+        if (p) {
+          p.innerHTML = "";
+          p.classList.add("has");
+          p.appendChild(im);
+        }
+      });
+    </script>
+  </body>
+</html>
